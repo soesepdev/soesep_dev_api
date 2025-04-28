@@ -5,10 +5,7 @@ const table = 'portfolio.profile';
 const fetchProfile = async () => {
   try {
     const sql = `
-      SELECT 
-        name, 
-        title 
-      FROM ${table}
+      SELECT * FROM ${table}
         WHERE id=1
     `;
 
@@ -23,11 +20,12 @@ const updateProfile = async (data) => {
     const sql = `
       UPDATE ${table} SET
         name = $1, 
-        title = $2
+        title = $2,
+        description = $3
         WHERE id=1
     `;
 
-    return await pg.none(sql, [data.name, data.title]);
+    return await pg.none(sql, [data.name, data.title, data.description]);
   } catch (err) {
     throw new Error('Error fetching profile: ' + err.message);
   }
