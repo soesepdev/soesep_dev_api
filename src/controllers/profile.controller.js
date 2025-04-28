@@ -18,10 +18,9 @@ exports.getProfile = async (req, res) => {
 
 exports.updateProfile = async (req, res) => {
     try {
-        const result = model.getProfile();
+        await model.updateProfile(req.body);
         res.status(200).json({
-            message: 'Update profile',
-            data: result
+            message: 'Update profile'
         });
     } catch (error) {
         res.status(500).json({ 

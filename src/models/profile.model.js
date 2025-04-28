@@ -3,32 +3,33 @@ const pg = require('../config/db');
 const table = 'portfolio.profile';
 
 const getProfile = async () => {
-    try {
-      const sql = `
+  try {
+    const sql = `
       SELECT 
         name, 
         title 
       FROM ${table}
         WHERE id=1
-      `;
+    `;
 
-      return await pg.one(sql);
-    } catch (error) {
-      console.error('Error fetching profile:', error);
-      throw new Error('Error fetching profile: ' + error.message);
-    }
+    return await pg.one(sql);
+  } catch (err) {
+    throw new Error('Error fetching profile: ' + err.message);
+  }
 };
 
 const updateProfile = async (data) => {
   try {
-    const profile = {}; 
-    if (!profile) {
-      throw new Error('Profile not found');
-    }
-    return profile;
-  } catch (error) {
-    console.error('Error fetching profile:', error);
-    throw new Error('Error fetching profile: ' + error.message);
+    const sql = `
+      UPDATE ${table} SET
+        name = $1, 
+        title = $2
+        WHERE id=1
+    `;
+
+    return await pg.none(sql, [data.name, data.title]);
+  } catch (err) {
+    throw new Error('Error fetching profile: ' + err.message);
   }
 };
   
