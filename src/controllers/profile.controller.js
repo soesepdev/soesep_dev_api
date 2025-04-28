@@ -1,9 +1,8 @@
 const model = require('../models/profile.model');
 
-exports.getProfile = async (req, res) => {
+exports.fetchProfile = async (req, res) => {
     try {
-        const result = await model.getProfile();
-        console.log(result)
+        const result = await model.fetchProfile();
         res.status(200).json({
             message: 'Get profile',
             data: result

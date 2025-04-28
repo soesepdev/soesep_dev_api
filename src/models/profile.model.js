@@ -2,7 +2,7 @@ const pg = require('../config/db');
 
 const table = 'portfolio.profile';
 
-const getProfile = async () => {
+const fetchProfile = async () => {
   try {
     const sql = `
       SELECT 
@@ -34,6 +34,6 @@ const updateProfile = async (data) => {
 };
   
 module.exports = {
-    getProfile,
-    updateProfile
+  fetchProfile,
+  updateProfile
 };  
