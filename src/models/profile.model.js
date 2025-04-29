@@ -5,7 +5,12 @@ const table = 'portfolio.profile';
 const fetchProfile = async () => {
   try {
     const sql = `
-      SELECT * FROM ${table}
+      SELECT
+        name,
+        title,
+        description,
+        image
+      FROM ${table}
         WHERE id=1
     `;
 
