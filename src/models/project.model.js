@@ -5,7 +5,7 @@ const table = 'portfolio.project';
 const fetchProject = async () => {
   try {
     const sql = `
-      SELECT * FROM ${table}
+      SELECT * FROM ${table} a ORDER BY a.title ASC
     `;
 
     return await pg.any(sql);

@@ -5,7 +5,7 @@ const table = 'portfolio.social';
 const fetchSocial = async () => {
   try {
     const sql = `
-      SELECT * FROM ${table}
+      SELECT * FROM ${table} a ORDER BY a.name ASC
     `;
 
     return await pg.any(sql);
